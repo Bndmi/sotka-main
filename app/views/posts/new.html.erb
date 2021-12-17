@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sotka</title>
+</head>
+<body>
+  <header class="row content_between align_center">
+    <div><img class="logo"  onclick='window.location.href="../hi"' src="/imgs/logo.png"></div>
+    <div>
+      <ul class="ul_inline margin_0">
+        <li onclick='window.location.href="posts"'>Публикации</li>
+        <li>Профиль</li>
+        <li onclick='window.location.href="about"'>О проекте</li>
+        <li class="bold_text">Вступить</li>
+      </ul>
+    </div>
+  </header>
+  
+  <section class="section4 p_l_section row content_start">
+    <div class="column content_between" style="margin-right: 100px;">
+      <div><h1 class="section_h margin_0_style2">Концепт</h1></div>
+      <%= form_with model: @post do |form| %>
+      <input class="input2" id='in1' type="text" placeholder="Автор" name=""> <br>
+      <%= form.text_field :title, :class => 'input2', :placeholder => "Название" %> <br>
+      <%= form.text_field :tags, :class => 'input2', :placeholder => "Ингридиенты"  %> <br>
+      <div>
+        <p class="label margin_0">Рецепт</p>
+        <div class="row content_between align_end">
+          <!-- <textarea style="padding: 40px;font-size: 18px;" id='in4'  class="area"></textarea> -->
+          <%= form.text_area :body, :class => 'area', :style => 'padding: 40px;font-size: 18px;' %> 
+          <!--<a style="height: fit-content;" onclick="otpr()" class="btn_input">отправить</a> -->
+          <%= form.submit 'отправить', :class => 'btn_input' %> 
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div>
+      <div class="photoInput"></div>
+    </div>
+  </section>
+
+
+  <footer class="m_t_section">
+    <div class="f1 row content_end">
+      <ul class="ul_inline margin_0">
+        <li onclick='window.location.href="posts"'>Публикации</li>
+        <li>Профиль</li>
+        <li onclick='window.location.href="about"'>О проекте</li>
+        <li class="bold_text">Вступить</li>
+      </ul>
+    </div>
+    <div class="f1 f2 b_top">
+      <ul class="margin_0 ul_inline ">
+        <li class="margin_0">Концепция</li>
+        <li>Исследования</li>
+        <li>Целевая аудитория</li>
+        <li>Функционал</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  function otpr(){
+    a=$('#in1').val();
+    b=$('#in2').val();
+    c=$('#in3').val();
+    d=$('#in4').val();
+    $.ajax({
+      url: 'create',
+      method: 'post',
+      dataType: 'html',
+      data: {data1: a,data2:b,data3: c,data4: d,},
+      success: function(data){
+        alert('Успешно!');
+      }
+    });
+  }
+</script>
+</html>
