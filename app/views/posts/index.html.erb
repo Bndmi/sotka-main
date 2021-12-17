@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sotka</title>
+</head>
+<body>
+	<header class="row content_between align_center">
+		<div><img class="logo" onclick='window.location.href="hi"' src="imgs/logo.png"></div>
+		<div>
+			<ul class="ul_inline margin_0">
+				<li onclick='window.location.href="posts"'>Публикации</li>
+				<li>Профиль</li>
+				<li onclick='window.location.href="about"'>О проекте</li>
+				<li class="bold_text">Вступить</li>
+			</ul>
+		</div>
+	</header>
+	
+	<section class="p_l_section row content_start wrap p_r_section" style="padding-top: 80px;">
+		<div id="item1" class="card">
+			<div class="card_img" style="background-image: url(data/photo.png);"></div>
+			<div class="column card_container">
+				<div class="row content_between align_center" style="padding: 10px 20px; width: 100%;">
+					<div class="row">
+						<div class="card_item">яйцо</div>
+						<div class="card_item">курица</div>
+					</div>
+					<input id='itemCheck1' onclick="colorDef(1)" class="card_checkbox" style="" type="checkbox" name="">
+				</div>
+				<div class="card_h">Глазунья с помидорами</div>
+				<div class="card_text" id="area1" onclick="moreOn(1)">
+					1. Сковороду растительное разогреть с растительным маслом.<br>
+					2. Помидор промыть, разрезать пополам и каждую половину нарезать вертикально на ломтики.<br>
+					3. Когда масло прогрелось выкладываем помидоры, перемешиваем и жарим<sta id='sta1'>...</sta>
+					<span class="hidden" id="hidden1">
+						закрытой крышкой.
+						Когда помидоры поджарились аккуратно разбиваем яйца и жарим не закрывая крышки, чтобы не испортить внешний вид желтка. Так он останется и жидким и не покроется не прозрачной пленкой. 
+						Когда белок поджарится аккуратно выкладываем яичницу на тарелку, солим если требуется и подаем. Не солим когда жарим, чтобы не получить белых пятен на желтке. 
+
+						Приятного аппетита.
+					</span>
+				</div>
+				<textarea class="hidden" id="textarea1">
+						1. Сковороду растительное разогреть с растительным маслом.<br>
+						2. Помидор промыть, разрезать пополам и каждую половину нарезать вертикально на ломтики.<br>
+						3. Когда масло прогрелось выкладываем помидоры, перемешиваем и жарим закрытой крышкой.
+						Когда помидоры поджарились аккуратно разбиваем яйца и жарим не закрывая крышки, чтобы не испортить внешний вид желтка. Так он останется и жидким и не покроется не прозрачной пленкой. 
+						Когда белок поджарится аккуратно выкладываем яичницу на тарелку, солим если требуется и подаем. Не солим когда жарим, чтобы не получить белых пятен на желтке. 
+
+						Приятного аппетита.
+					</textarea>
+				<div class="row content_start" style="padding-left: 40px;">
+					<a class="card_btn">12.12.12</a>
+					<a class="card_btn">save</a>
+					<a class="card_btn">edit</a>
+					<a class="card_btn" onclick="deleteEl(1)">dest</a>
+				</div>
+
+			</div>
+		</div>
+		<% @counter = 0 %>
+		<% @posts.each do |post| %>
+				<%@counter = @counter + 1 %>
+                <div id="item1" class="card">
+			<div class="card_img" style="background-image: url(data/photo.png);"></div>
+			<div class="column card_container">
+				<div class="row content_between align_center" style="padding: 10px 20px; width: 100%;">
+					<div class="row">
+						<div class="card_item"><%= post.tags %></div>
+					</div>
+					<input id="itemCheck" onclick="" class="card_checkbox" style="" type="checkbox" name="">
+				</div>
+				<div class="card_h"><%= post.title %></div>
+				<div class="card_text" id="area1" onclick="moreOn(1)">
+					<%= post.body %>
+				</div>
+				<textarea class="hidden" id="textarea1">
+						1. Сковороду растительное разогреть с растительным маслом.<br>
+						2. Помидор промыть, разрезать пополам и каждую половину нарезать вертикально на ломтики.<br>
+						3. Когда масло прогрелось выкладываем помидоры, перемешиваем и жарим закрытой крышкой.
+						Когда помидоры поджарились аккуратно разбиваем яйца и жарим не закрывая крышки, чтобы не испортить внешний вид желтка. Так он останется и жидким и не покроется не прозрачной пленкой. 
+						Когда белок поджарится аккуратно выкладываем яичницу на тарелку, солим если требуется и подаем. Не солим когда жарим, чтобы не получить белых пятен на желтке. 
+
+						Приятного аппетита.
+					</textarea>
+				<div class="row content_start" style="padding-left: 40px;">
+					<a class="card_btn">12.12.12</a>
+					<a class="card_btn">save</a>
+					<a class="card_btn">edit</a>
+					<a class="card_btn">dest</a>
+				</div>
+
+			</div>
+		</div>
+       <% end %>
+		
+	</section>
+
+	
+	<footer class="m_t_section">
+		<section class="p_l_section">
+			<a class='btn_input btn_yellow' onclick='window.location.href="posts/new"'>Создать пост</a>
+		</section>
+		<div class="f1 row content_end">
+			<ul class="ul_inline margin_0">
+				<li onclick='window.location.href="posts"'>Публикации</li>
+				<li>Профиль</li>
+				<li onclick='window.location.href="about"'>О проекте</li>
+				<li class="bold_text">Вступить</li>
+			</ul>
+		</div>
+		<div class="f1 f2 b_top">
+			<ul class="margin_0 ul_inline ">
+				<li class="margin_0">Концепция</li>
+				<li>Исследования</li>
+				<li>Целевая аудитория</li>
+				<li>Функционал</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	function colorDef(arg) {
+		let elem = document.getElementById('item'+arg);
+		let elem2 = document.getElementById('itemCheck'+arg);
+		elem.style.background = '#FBFF42';
+		elem2.setAttribute("onclick", "uncolorDef("+arg+");");
+	}
+	function uncolorDef(arg) {
+		let elem = document.getElementById('item'+arg);
+		let elem2 = document.getElementById('itemCheck'+arg);
+		elem.style.background = '#C4C4C4';
+		elem2.setAttribute("onclick", "colorDef("+arg+");");
+	}
+	function moreOn(arg){
+		let elem = document.getElementById('area'+arg);
+		let elem2 = document.getElementById('hidden'+arg);
+		let elem3 = document.getElementById('sta'+arg);
+		elem3.style.display = 'none';
+		elem2.style.display = 'unset';
+		elem.setAttribute("onclick", "moreOff("+arg+");");
+	}
+	function moreOff(arg) {
+		let elem = document.getElementById('area'+arg);
+		let elem2 = document.getElementById('hidden'+arg);
+		let elem3 = document.getElementById('sta'+arg);
+		elem3.style.display = 'unset';
+		elem2.style.display = 'none';
+		elem.setAttribute("onclick", "moreOn("+arg+");");
+	}
+	function deleteEl(arg) {
+		let elem = document.getElementById('item'+arg);
+		elem.style.display = 'none';
+	}
+	
+</script>
+</html>
